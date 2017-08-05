@@ -56,10 +56,10 @@
         android:id="@+id/imageView4"
         android:layout_width="15dp"
         android:layout_height="15dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintTop_toTopOf="@+id/txtCurrentTemp"
         app:srcCompat="@drawable/degree"
-        android:layout_marginRight="150dp"
+        android:layout_marginRight="149dp"
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
