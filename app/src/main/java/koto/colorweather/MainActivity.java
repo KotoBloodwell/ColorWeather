@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         iconImageView.setImageDrawable(currentWeather.getIconDrawableResource());*/
 
 
-        String url ="https://api.darksky.net/forecast/4be64bdb33639191039fa64a0ac7d8df/6.244203,-75.58121189999997";
+        String url ="https://api.darksky.net/forecast/4be64bdb33639191039fa64a0ac7d8df/6.244203,-75.58121189999997?units=si";
         RequestQueue queue = Volley.newRequestQueue(this);
 
 // Request a string response from the provided URL.
@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
                         try{
                             CurrentWeather currentWeather = getCurrentWeatherFromJson(response);
                             txtCurrentTemp.setText(currentWeather.getCurrentTemperature());
-                            txtHighTemp.setText(currentWeather.getHighestTemperature());
-                            txtLowTemp.setText(currentWeather.getLowestTemperature());
+                            txtHighTemp.setText(String.format("H: %sº",currentWeather.getHighestTemperature()));
+                            txtLowTemp.setText(String.format("H: %sº",currentWeather.getLowestTemperature()));
                             iconImageView.setImageDrawable(currentWeather.getIconDrawableResource());
 
                         }catch(org.json.JSONException exception){
@@ -98,8 +98,8 @@ public class MainActivity extends AppCompatActivity {
 
         String summary = jsonWithCurrentWeather.getString("summary");
         String currentTemperature = Math.round(jsonWithCurrentWeather.getDouble("temperature")) + "";
-        String maxTemp =  "H:" + Math.round(jsonTodayWeather.getDouble("temperatureMax"))+ "°";
-        String minTemp = "L:" + Math.round(jsonTodayWeather.getDouble("temperatureMin"))+ "°";;
+        String maxTemp = Math.round(jsonTodayWeather.getDouble("temperatureMax"))+ "";
+        String minTemp = Math.round(jsonTodayWeather.getDouble("temperatureMin"))+ "";;
         String icon = jsonWithCurrentWeather.getString("icon");
         CurrentWeather currentWeather = new CurrentWeather(MainActivity.this);
         currentWeather.setDescription(summary);
