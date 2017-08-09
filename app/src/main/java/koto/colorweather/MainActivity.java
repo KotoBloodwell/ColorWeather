@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
    /*     CurrentWeather currentWeather = new CurrentWeather(MainActivity.this);
         currentWeather.setCurrentTemperature("30");
-        currentWeather.setDescription("Sunny");
+        currentWeather.setHourWeatherDescription("Sunny");
         currentWeather.setHighestTemperature("H:32º");
         currentWeather.setLowestTemperature("L:20º");
         currentWeather.setIconImage("sunny");
