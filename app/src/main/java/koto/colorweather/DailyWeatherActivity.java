@@ -7,6 +7,8 @@ import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
+import koto.colorweather.Adapters.DailyWeatherAdapter;
+
 public class DailyWeatherActivity extends ListActivity {
 
     @Override
@@ -14,17 +16,21 @@ public class DailyWeatherActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_weather);
 
-        ArrayList<String> daysArray = new ArrayList<String>();
-        daysArray.add("Lunes");
-        daysArray.add("Martes");
-        daysArray.add("Miercoles");
-        daysArray.add("Jueves");
-        daysArray.add("Viernes");
-        daysArray.add("Sabado");
-        daysArray.add("Domingo");
+        ArrayList<Day> days = new ArrayList<Day>();
+        Day day = new Day();
+        day.setDayName("Monday");
+        day.setDayDescriptionWeather("Party Cloudy");
+        day.setDayProbability("Rain Probability: 0%");
 
-        ArrayAdapter<String> adapterDays = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,daysArray);
-        setListAdapter(adapterDays);
+        for ( int i=0;i<500;i++){
+            days.add(day);
+        }
+
+
+        days.add(day);
+
+        DailyWeatherAdapter dailyWeatherAdapter = new DailyWeatherAdapter(this,days);
+        setListAdapter(dailyWeatherAdapter);
 
     }
 }
