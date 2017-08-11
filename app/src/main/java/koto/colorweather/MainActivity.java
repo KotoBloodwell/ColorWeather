@@ -17,6 +17,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -122,5 +124,27 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.txtMinutelyWeather) void txtMinutelyWeather() {
         Intent intentMinute = new Intent(MainActivity.this,MinuteWeather.class);
         startActivity(intentMinute);
+    }
+
+    private ArrayList<Day> getDailyWeatherFromJson(String json)throws JSONException{
+        ArrayList<Day> days = new ArrayList<Day>();
+        JSONObject jsonObject = new JSONObject(json);
+        JSONObject jsonWithCurrentWeather = jsonObject.getJSONObject("currently");
+
+        JSONObject jsonWithDailyWeather = jsonObject.getJSONObject("daily");
+
+        JSONArray jsonArrayDaily = jsonWithDailyWeather.getJSONArray("data");
+
+        for(int i = 0; i < jsonWithDailyWeather.length();i++){
+                Day day = new Day();
+            JSONObject jsonWithDayData = jsonArrayDaily.getJSONObject(i);
+                day.setDayName(jsonWithDayData.getString(""));
+
+
+        }
+
+        return days;
+
+
     }
 }
