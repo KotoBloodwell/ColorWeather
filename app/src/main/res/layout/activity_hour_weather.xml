@@ -27,4 +27,14 @@
         android:divider="@null"
         android:dividerHeight="10dp"
         android:padding="5dp"/>
+    <TextView
+        style="@style/MainFont"
+        android:id="@+id/txtDataEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="13dp"
+        android:text="@string/no_data_to_display"
+        android:layout_centerInParent="true"/>
 </RelativeLayout>

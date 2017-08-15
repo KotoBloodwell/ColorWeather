@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,8 @@ import koto.colorweather.Adapters.HourWeatherAdapter;
 public class HourWeatherActivity extends Activity {
 
 @BindView(R.id.listViewHour) ListView listViewHour;
+    @BindView(R.id.txtDataEmpty) TextView txtDataEmpty;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,5 +32,7 @@ public class HourWeatherActivity extends Activity {
 
         HourWeatherAdapter hourWeatherAdapter = new HourWeatherAdapter(this,hours);
         listViewHour.setAdapter(hourWeatherAdapter);
+
+        listViewHour.setEmptyView(txtDataEmpty);
     }
 }

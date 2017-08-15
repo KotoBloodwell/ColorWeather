@@ -4,4 +4,5 @@
     <string name="minute_weather">Minute Weather</string>
     <string name="daily_forecast">Daily Forecast</string>
     <string name="daily">Daily</string>
+    <string name="no_data_to_display">No Data to Display</string>
 </resources>

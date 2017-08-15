@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
 
        // String url ="https://api.darksky.net/forecast/4be64bdb33639191039fa64a0ac7d8df/6.244203,-75.58121189999997?units=si";
-      String url = "https://api.darksky.net/forecast/4be64bdb33639191039fa64a0ac7d8df/37.8267,-122.423?units=si";
+      String url = "https://api.darksky.net/forecast/4be64bdb33639191039fa64a0ac7d8d/37.8267,-122.423?units=si";
         RequestQueue queue = Volley.newRequestQueue(this);
 
 // Request a string response from the provided URL.
@@ -114,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
+                Toast.makeText(MainActivity.this,"Connection Error",Toast.LENGTH_LONG).show();
                 //mTextView.setText("That didn't work!");
             }
         });
