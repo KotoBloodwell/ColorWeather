@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient_blue"
-    tools:context="koto.colorweather.MinuteWeather">
+    tools:context="koto.colorweather.MinuteWeatherActivity">
 
     <TextView
         android:id="@+id/txtTitleMinuteWeather"
@@ -23,5 +23,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/txtTitleMinuteWeather"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"/>
 </RelativeLayout>

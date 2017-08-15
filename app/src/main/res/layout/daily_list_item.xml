@@ -18,6 +18,7 @@
 
     <TextView
         style="@style/MainFont"
+        android:textSize="18dp"
         android:id="@+id/txtDescriptionDaily"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,6 +27,7 @@
 
     <TextView
         style="@style/MainFont"
+        android:textSize="18dp"
         android:id="@+id/txtProbabilityDaily"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

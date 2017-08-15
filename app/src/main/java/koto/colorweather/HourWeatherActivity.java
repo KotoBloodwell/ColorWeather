@@ -2,7 +2,9 @@ package koto.colorweather;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -19,17 +21,10 @@ public class HourWeatherActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hour_weather);
-        ArrayList<Hour> hours = new ArrayList<Hour>();
         ButterKnife.bind(this);
 
-        Hour hour = new Hour();
-        hour.setHourWeather("20:00");
-        hour.setHourWeatherDescription("Clear");
-
-
-        for ( int i=0;i<500;i++){
-            hours.add(hour);
-        }
+        Intent intent = getIntent();
+        ArrayList<Hour> hours  = intent.getParcelableArrayListExtra(MainActivity.HOURLY_ARRAY);
 
 
         HourWeatherAdapter hourWeatherAdapter = new HourWeatherAdapter(this,hours);
