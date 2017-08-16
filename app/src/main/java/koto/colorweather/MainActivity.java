@@ -1,6 +1,7 @@
 package koto.colorweather;
 
 import android.content.Intent;
+import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -56,30 +57,27 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Minute> minutes;
 
     final static String TAG = "MainActivity";
+
+    private FusedLocationProviderClient mFusedLocationClient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-   /*     CurrentWeather currentWeather = new CurrentWeather(MainActivity.this);
-        currentWeather.setCurrentTemperature("30");
-        currentWeather.setHourWeatherDescription("Sunny");
-        currentWeather.setHighestTemperature("H:32º");
-        currentWeather.setLowestTemperature("L:20º");
-        currentWeather.setIconImage("sunny");
-
-
-        txtCurrentTemp.setText(currentWeather.getCurrentTemperature());
-        txtHighTemp.setText(currentWeather.getHighestTemperature());
-        txtLowTemp.setText(currentWeather.getLowestTemperature());
-        iconImageView.setImageDrawable(currentWeather.getIconDrawableResource());*/
-
-
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
 
        // String url ="https://api.darksky.net/forecast/4be64bdb33639191039fa64a0ac7d8df/6.244203,-75.58121189999997?units=si";
-      String url = "https://api.darksky.net/forecast/4be64bdb33639191039fa64a0ac7d8d/37.8267,-122.423?units=si";
+
+    String URL ="https://api.darksky.net/forecast/4be64bdb33639191039fa64a0ac7d8df/";
+
+        String latitude = "37.8267";
+        String longitude = "-122.423";
+        String units = "?units=si";
+
+      String url = URL +  latitude + ","+ longitude +  units;
         RequestQueue queue = Volley.newRequestQueue(this);
 
 // Request a string response from the provided URL.
@@ -90,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
                         try{
                             CurrentWeather currentWeather = getCurrentWeatherFromJson(response);
+                            txtDescription.setText(currentWeather.getDescription());
                             txtCurrentTemp.setText(currentWeather.getCurrentTemperature());
                             txtHighTemp.setText(String.format("H: %sº",currentWeather.getHighestTemperature()));
                             txtLowTemp.setText(String.format("H: %sº",currentWeather.getLowestTemperature()));
@@ -121,6 +120,16 @@ public class MainActivity extends AppCompatActivity {
         });
         queue.add(stringRequest);
 
+        mFusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            // ...
+                        }
+                    }
+                });
     }
 
     private CurrentWeather getCurrentWeatherFromJson(String json)throws JSONException{
